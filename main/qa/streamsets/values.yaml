@@ -1,0 +1,17 @@
+persistence:
+  enabled: true
+
+streamsets:
+  tag: 3.53.1
+  env:
+    SDC_JAVA_OPTS: "-Xmx2048m -Xms2048m -server"
+  resources:
+    limits:
+      cpu: 1
+      memory: 2Gi
+    requests:
+      cpu: 1
+      memory: 2Gi
+
+podSecurityContext:
+  fsGroup: 1000

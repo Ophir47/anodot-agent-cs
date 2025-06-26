@@ -1,0 +1,21 @@
+image:
+  registry: docker.io
+  repository: library/postgres
+  tag: "15.5"
+  pullPolicy: IfNotPresent
+
+postgresqlUsername: agent 
+postgresqlPassword: agent 
+postgresqlDatabase: agent
+
+auth:
+  enablePostgresUser: true
+
+resources:
+  requests:
+    memory: 512Mi
+    cpu: 250m
+  limits:
+    memory: 1Gi
+    cpu: 500m
+
