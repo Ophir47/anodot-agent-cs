@@ -4,13 +4,14 @@ image:
   tag: "15.5"
   pullPolicy: IfNotPresent
 
-postgresqlUsername: agent 
-postgresqlPassword: agent 
-postgresqlDatabase: agent
+
 
 auth:
-  enablePostgresUser: true
-
+  postgresPassword: postgres
+  database: agent
+  username: postgres
+  password: postgres
+  
 resources:
   requests:
     memory: 512Mi
