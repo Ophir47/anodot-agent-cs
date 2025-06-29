@@ -1,11 +1,5 @@
 image:
-  registry: docker.io
-  repository: library/postgres
-  tag: "15.5"
-  pullPolicy: IfNotPresent
-
-
-
+  tag: "15.6.0"
 auth:
   postgresPassword: postgres
   database: agent
