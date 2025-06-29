@@ -3,7 +3,17 @@ replicaCount: 1
 image:
   repository: anodot/agent
   tag: 3.53.1
-
+env:
+- name: AGENT_DB_HOST
+  value: "agent-db-postgresql"
+- name: AGENT_DB_USER
+  value: 'postgres'
+- name: AGENT_DB_PASSWORD
+  value: 'postgres'
+- name: AGENT_DB
+  value: 'agent'
+- name: LISTEN_PORT
+  value: '8080'
 resources:
   limits:
     cpu: 100m
