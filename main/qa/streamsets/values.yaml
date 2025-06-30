@@ -14,20 +14,18 @@ streamsets:
     requests:
       cpu: 500m
       memory: 2Gi
-
-livenessProbe:
-  httpGet:
-    path: /
-    port: 18630
-  initialDelaySeconds: 60
-  periodSeconds: 10
-
-readinessProbe:
-  httpGet:
-    path: /
-    port: 18630
-  initialDelaySeconds: 30
-  periodSeconds: 10
+  livenessProbe:
+    httpGet:
+      path: /ping
+      port: 18630
+    initialDelaySeconds: 60
+    periodSeconds: 10
+  readinessProbe:
+    httpGet:
+      path: /ping
+      port: 18630
+    initialDelaySeconds: 30
+    periodSeconds: 10
 
 persistence:
   enabled: true
