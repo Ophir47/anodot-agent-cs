@@ -7,7 +7,8 @@ auth:
   database: agent
   username: postgres
   password: postgres
-  
+volumePermissions:
+  enabled: true
 resources:
   requests:
     memory: 512Mi
