@@ -24,7 +24,18 @@ streamsets:
     requests:
       cpu: 500m
       memory: 2Gi
-
+persistence:
+  enabled: true
+  accessMode: ReadWriteOnce
+  size: 10Gi
+  storageClass: standard   # or your cluster's storage class name
+volumeMounts:
+  - name: streamsets-data
+    mountPath: /data
+volumes:
+  - name: streamsets-data
+    persistentVolumeClaim:
+      claimName: {{ .Values.persistence.claimName | default (include "fullname" .) }}
 service:
   type: NodePort
   port: 18630
