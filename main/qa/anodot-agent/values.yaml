@@ -1,7 +1,7 @@
 replicaCount: 1
 
 image:
-  repository: anodot/agent
+  repository: anodot/daria
   tag: 3.53.1
 
 env:
