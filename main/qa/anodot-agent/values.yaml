@@ -10,7 +10,7 @@ env:
 - name: AGENT_DB_USER
   value: "postgres"
 - name: AGENT_DB_PASSWORD
-  value: "postgres"
+  value: "postgres-password"
 - name: AGENT_DB
   value: "agent"
 - name: LISTEN_PORT
