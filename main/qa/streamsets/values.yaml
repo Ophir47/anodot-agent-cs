@@ -2,21 +2,7 @@ streamsets:
   tag: 3.53.1
   env:
     SDC_JAVA_OPTS: "-Xmx2048m -Xms2048m -server"
-    SDC_CONF_HTTP_PORT: "18630"  
-  containerPorts:
-    - name: http
-      containerPort: 18630
-      protocol: TCP
-  readinessProbe:
-    httpGet:
-      path: /
-      port: 18630
-      scheme: HTTP
-    initialDelaySeconds: 10
-    periodSeconds: 10
-    timeoutSeconds: 1
-    successThreshold: 1
-    failureThreshold: 3
+    SDC_CONF_HTTP_PORT: "18630"
   resources:
     limits:
       cpu: 500m
@@ -24,18 +10,13 @@ streamsets:
     requests:
       cpu: 500m
       memory: 2Gi
+
 persistence:
   enabled: true
   accessMode: ReadWriteOnce
   size: 10Gi
-  storageClass: standard   # or your cluster's storage class name
-volumeMounts:
-  - name: streamsets-data
-    mountPath: /data
-volumes:
-  - name: streamsets-data
-    persistentVolumeClaim:
-      claimName: {{ .Values.persistence.claimName | default (include "fullname" .) }}
+  storageClass: standard
+
 service:
   type: NodePort
   port: 18630
