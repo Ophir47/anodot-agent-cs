@@ -10,8 +10,8 @@ streamsets:
       cpu: 500m
       memory: 1Gi
     requests:
-      cpu: 1
-      memory: 500m
+      cpu: 500m
+      memory: 1Gi
 
 podSecurityContext:
   fsGroup: 1000
