@@ -4,7 +4,7 @@ streamsets:
     SDC_JAVA_OPTS: "-Xmx2048m -Xms2048m -server"
     SDC_CONF_HTTP_PORT: "18630"
     - name: SDC_CONF_HTTP_BIND_ADDRESS
-    value: "0.0.0.0" 
+      value: "0.0.0.0" 
   resources:
     limits:
       cpu: 500m
