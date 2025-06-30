@@ -4,14 +4,14 @@ persistence:
 streamsets:
   tag: 3.53.1
   env:
-    SDC_JAVA_OPTS: "-Xmx2048m -Xms2048m -server"
+    SDC_JAVA_OPTS: "-Xmx1024m -Xms1024m -server"
   resources:
     limits:
-      cpu: 1
-      memory: 2Gi
+      cpu: 500m
+      memory: 1Gi
     requests:
       cpu: 1
-      memory: 2Gi
+      memory: 500m
 
 podSecurityContext:
   fsGroup: 1000
