@@ -6,7 +6,7 @@ image:
 
 env:
 - name: AGENT_DB_HOST
-  value: "agent-db-postgresql"
+  value: "postgres-postgresql"
 - name: AGENT_DB_USER
   value: "postgres"
 - name: AGENT_DB_PASSWORD
