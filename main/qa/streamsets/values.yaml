@@ -1,7 +1,7 @@
 streamsets:
   tag: 3.53.1
   env:
-    SDC_JAVA_OPTS: "-Xmx1024m -Xms1024m -server"
+    SDC_JAVA_OPTS: "-Xmx2048m -Xms2048m -server"
     SDC_CONF_HTTP_PORT: "18630"  
   containerPorts:
     - name: http
@@ -20,10 +20,10 @@ streamsets:
   resources:
     limits:
       cpu: 500m
-      memory: 1Gi
+      memory: 2Gi
     requests:
       cpu: 500m
-      memory: 1Gi
+      memory: 2Gi
 
 service:
   type: NodePort
