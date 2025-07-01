@@ -40,7 +40,7 @@ nodeSelector: {}
 service:
   name: streamsets-agent
   type: NodePort
-  port: 8080
+  port: 18630
 
 streamsetsurl: "http://streamsets-agent:18630"
 
