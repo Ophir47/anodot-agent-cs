@@ -1,31 +1,34 @@
-streamsets:
-  tag: 3.53.1
-  env:
-    - name: SDC_JAVA_OPTS
-      value: "-Xmx2048m -Xms2048m -server"
-    - name: SDC_CONF_HTTP_PORT
-      value: "18630"
-    - name: SDC_CONF_HTTP_BIND_ADDRESS
-      value: "0.0.0.0"
-  resources:
-    limits:
-      cpu: 500m
-      memory: 2Gi
-    requests:
-      cpu: 500m
-      memory: 2Gi
-  livenessProbe:
-    httpGet:
-      path: /ping
-      port: 18630
-    initialDelaySeconds: 60
-    periodSeconds: 10
-  readinessProbe:
-    httpGet:
-      path: /ping
-      port: 18630
-    initialDelaySeconds: 30
-    periodSeconds: 10
+tag: 3.53.1
+
+env:
+  - name: SDC_JAVA_OPTS
+    value: "-Xmx2048m -Xms2048m -server"
+  - name: SDC_CONF_HTTP_PORT
+    value: "18630"
+  - name: SDC_CONF_HTTP_BIND_ADDRESS
+    value: "0.0.0.0"
+
+resources:
+  limits:
+    cpu: 500m
+    memory: 2Gi
+  requests:
+    cpu: 500m
+    memory: 2Gi
+
+livenessProbe:
+  httpGet:
+    path: /ping
+    port: 18630
+  initialDelaySeconds: 60
+  periodSeconds: 10
+
+readinessProbe:
+  httpGet:
+    path: /ping
+    port: 18630
+  initialDelaySeconds: 30
+  periodSeconds: 10
 
 persistence:
   enabled: true
@@ -37,3 +40,4 @@ service:
   type: NodePort
   port: 18630
   targetPort: 18630
+
