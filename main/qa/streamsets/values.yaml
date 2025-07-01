@@ -1,43 +1,53 @@
-tag: 3.53.1
-
-env:
-  - name: SDC_JAVA_OPTS
-    value: "-Xmx2048m -Xms2048m -server"
-  - name: SDC_CONF_HTTP_PORT
-    value: "18630"
-  - name: SDC_CONF_HTTP_BIND_ADDRESS
-    value: "0.0.0.0"
-
-resources:
-  limits:
-    cpu: 500m
-    memory: 2Gi
-  requests:
-    cpu: 500m
-    memory: 2Gi
-
-livenessProbe:
-  httpGet:
-    path: /ping
-    port: 18630
-  initialDelaySeconds: 60
-  periodSeconds: 10
-
-readinessProbe:
-  httpGet:
-    path: /ping
-    port: 18630
-  initialDelaySeconds: 30
-  periodSeconds: 10
-
+# Default values for agent.
+# Agent docs can be found at https://github.com/anodot/daria/wiki
+replicaCount: 1
 persistence:
-  enabled: true
-  accessMode: ReadWriteOnce
-  size: 10Gi
-  storageClass: standard
+  enabled: false
+  storageClass: ""
+  size: "3Gi"
+
+anodotapiurl: "http://anodotd:8080"
+
+busybox:
+  image: 
+    repository: busybox
+    tag: latest
+    pullPolicy: IfNotPresent
+
+streamsets:
+  repository: anodot/streamsets
+  tag: 3.53.1
+  pullPolicy: IfNotPresent
+  env:
+    SDC_JAVA_OPTS: "-Xmx2048m -Xms2048m -server"
+  resources:
+    limits:
+     cpu: 500m
+     memory: 2Gi
+    requests:
+     cpu: 500m
+     memory: 2Gi
+
+nameOverride: "streamsets-agent"
+fullnameOverride: "streamsets-agent"
+
+topologySpreadConstraints: []
+
+podAnnotations: {}
+
+nodeSelector: {}
 
 service:
+  name: streamsets-agent
   type: NodePort
-  port: 18630
-  targetPort: 18630
+  port: 8080
 
+streamsetsurl: "http://streamsets-agent:18630"
+
+securityContext: {}
+podSecurityContext: {}
+
+runInitContainer: false
+
+ingress:
+  enabled: false
