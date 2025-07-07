@@ -1,32 +1,49 @@
+# Default values for agent.
+# Agent docs can be found at https://github.com/anodot/daria/wiki
 replicaCount: 1
 
 image:
   repository: anodot/daria
-  tag: 3.53.1
-
-env:
-- name: AGENT_DB_HOST
-  value: "postgres-postgresql"
-- name: AGENT_DB_USER
-  value: "postgres"
-- name: AGENT_DB_PASSWORD
-  value: "postgres"
-- name: AGENT_DB
-  value: "agent"
-- name: LISTEN_PORT
-  value: "8080"
+  tag: 3.52.1
+  pullPolicy: IfNotPresent
 
 resources:
   limits:
-    cpu: 1
-    memory: 512Mi
+   cpu: 1
+   memory: 512Mi
   requests:
-    cpu: 1
-    memory: 512Mi
+   cpu: 1
+   memory: 512Mi
+env:
+  - name: ENV_PROD
+    value: 'false'
+  - name: AGENT_DB_HOST
+    value: "postgres-postgresql"
+  - name: AGENT_DB_USER
+    value: 'agent'
+  - name: AGENT_DB_PASSWORD
+    value: 'agent'
+  - name: AGENT_DB
+    value: "postgres-postgresql"
+  - name: LISTEN_PORT
+    value: '8080'
 
-postgresql:
-  enabled: true
-  auth:
-    postgresPassword: "postgres"
-    username: "postgres"
-    database: "agent"
+nameOverride: "anodot-agent"
+fullnameOverride: "anodot-agent"
+
+podAnnotations: {}
+
+nodeSelector: {}
+
+topologySpreadConstraints: []
+
+service:
+  name: anodot-agent
+  type: ClusterIP
+  port: 8080
+
+container:
+  port: 8080
+
+configmap:
+  enabled: false
