@@ -20,11 +20,11 @@ env:
   - name: AGENT_DB_HOST
     value: "postgres-postgresql"
   - name: AGENT_DB_USER
-    value: 'agent'
+    value: 'postgres'
   - name: AGENT_DB_PASSWORD
-    value: 'agent'
+    value: 'postgres'
   - name: AGENT_DB
-    value: "postgres-postgresql"
+    value: "agent"
   - name: LISTEN_PORT
     value: '8080'
 
