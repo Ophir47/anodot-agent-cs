@@ -18,7 +18,7 @@ env:
   - name: ENV_PROD
     value: 'false'
   - name: AGENT_DB_HOST
-    value: "postgres-postgresql"
+    value: "postgres-postgresql.anodot-agent-kube.svc.cluster.local"
   - name: AGENT_DB_USER
     value: 'postgres'
   - name: AGENT_DB_PASSWORD
